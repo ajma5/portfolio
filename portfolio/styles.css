@@ -1,0 +1,456 @@
+/* Reset and basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-variant: small-caps;
+    letter-spacing: 1.2px;
+}
+
+/* Header and menu styles */
+.menu-wrap {
+    height: 5em;
+    background-color: #fffefa;
+    padding: 1em 15px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.logo img {
+    height: auto;
+    max-height: 2.5em;
+    width: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+nav {
+    text-align: right;
+}
+
+nav ul {
+    list-style-type: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s;
+    background-color: #fffefa;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    display: block;
+    padding: .75em 1.75em;
+    color: #565449; /* Text color */
+    text-decoration: none;
+    position: relative;
+    font-size: 1.2em;
+    transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover::after,
+nav ul li a:focus::after {
+    background-color: #d76507; /* Hover color for underline */
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    font-weight: bold;
+    color: #565449; /* Hover color for text */
+}
+
+.menu-icon {
+    font-size: 1.5em;
+    color: #565449;
+    cursor: pointer;
+    display: none;
+}
+
+#checkbox {
+    display: none;
+}
+
+/* Image grid styles */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+    padding: 0 3em;
+    max-width: 1600px;
+    margin: 2em auto;
+    margin-top: 1em;
+    background-color: #fffefa;
+}
+
+.image-item {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0px;
+}
+
+.image-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0px;
+    transition: opacity 0.3s ease;
+}
+
+.image-item:hover img {
+    opacity: 0.8;
+}
+
+.image-item .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fffefa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-item:hover .image-overlay {
+    opacity: 1;
+}
+
+.image-item .image-overlay p {
+    text-align: center;
+    color: #fffefa;
+    padding: 1em;
+    font-size: 2em;
+}
+
+
+/* Footer styles */
+footer {
+    width: 100%;
+    background-color: #fffefa;
+    color: #565449;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 999;
+    bottom: 0;
+}
+
+footer a {
+    display: inline-block;
+    margin: 0 10px; /* Adjust spacing between icons */
+    margin-bottom: .50em;
+}
+
+footer img {
+    max-height: 1.50em; /* Set maximum height for the logos */
+    width: auto;
+    vertical-align: middle;
+}
+
+
+/* Media Queries */
+@media (max-width: 767px) {
+    /* Mobile styles */
+    .menu-wrap {
+        height: 4em;
+        padding: 0.5em 15px;
+    }
+
+    .logo {
+        margin-top: 1em;
+        margin-right: auto;
+    }
+
+    .logo img {
+        max-height: 2.5em;
+    }
+
+    nav {
+        text-align: left;
+    }
+
+    nav ul {
+        max-height: 0;
+        background-color: #fffefa;
+        position: fixed;
+        width: 100%;
+        top: 4em;
+        left: 0;
+        padding-top: 1em;
+        z-index: 1000;
+    }
+
+    nav ul li {
+        display: block;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    nav ul li a {
+        padding: .75em 0;
+        display: inline-block;
+        width: 100%;
+        color: #565449;
+        font-size: 1em;
+    }
+
+    nav ul li a::after {
+        height: 1px;
+    }
+
+    #checkbox:checked ~ nav ul {
+        max-height: 100vh;
+    }
+
+    .logo img {
+        max-height: 3em;
+    }
+
+    .menu-icon {
+        font-size: 1.5em;
+        color: #565449;
+        cursor: pointer;
+        display: block;
+        z-index: 1001;
+    }
+
+    /* Adjust image grid for mobile */
+    .image-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Tablet styles */
+    .image-grid {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 0 2em;
+    }
+
+    .image-item {
+        flex: 0 0 calc(33.33% - 20px);
+    }
+
+    .top-image {
+        padding: 3em 1em;
+    }
+
+    .top-image img {
+        border-radius: 0;
+    }
+
+    nav ul li a {
+        font-size: 1em;
+    }
+
+    .menu-wrap {
+        height: 4em;
+        padding: 0.5em 15px;
+    }
+
+    .logo {
+        margin-top: 1em;
+        margin-right: auto;
+    }
+
+    .logo img {
+        max-height: 2.5em;
+    }
+
+    nav {
+        text-align: left;
+    }
+
+    nav ul {
+        max-height: 0;
+        background-color: #fffefa;
+        position: fixed;
+        width: 100%;
+        top: 4em;
+        left: 0;
+        padding-top: 1em;
+        z-index: 1000;
+    }
+
+    nav ul li {
+        display: block;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    nav ul li a {
+        padding: .75em 0;
+        display: inline-block;
+        width: 100%;
+        color: #565449;
+        font-size: 1em;
+    }
+
+    nav ul li a::after {
+        height: 1px;
+    }
+
+    #checkbox:checked ~ nav ul {
+        max-height: 100vh;
+    }
+
+    .logo img {
+        max-height: 3em;
+    }
+
+    .menu-icon {
+        font-size: 1.5em;
+        color: #565449;
+        cursor: pointer;
+        display: block;
+        z-index: 1001;
+    }
+
+    /* Adjust landscape image size */
+    .image-item.landscape {
+        grid-column: span 2;
+        height: auto;
+    }
+
+    .image-item.landscape img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media (min-width: 992px) {
+    /* Large screens (Desktop) styles */
+    .logo img {
+        max-height: 2.5em;
+    }
+
+    .menu-icon {
+        display: none;
+    }
+
+    nav {
+        position: relative;
+        top: 0;
+        text-align: right;
+    }
+
+    nav ul {
+        max-height: none;
+        overflow: visible;
+        background-color: transparent;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    nav ul li {
+        margin-left: 1em;
+    }
+
+    nav ul li a {
+        padding: .75em 1.75em;
+        color: #565449;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-size: 1.2em;
+    }
+
+    nav ul li a:hover,
+    nav ul li a:focus {
+        color: #565449;
+        font-weight: bold;
+    }
+
+    /* Adjust landscape image size */
+    .image-item.landscape {
+        grid-column: span 2;
+        height: auto;
+    }
+
+    .image-item.landscape img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .image-item:hover::after {
+        opacity: 0;
+    }
+}
+
+/* Ensure the body or any parent containers are not conflicting */
+body, html {
+    background-color: #fffefa;
+    color: #565449; /* Default text color */
+}
+
+/* Styles for the h1 heading */
+h1 {
+    text-align: left;
+    margin-top: 1em; /* Adjust as needed */
+    font-size: 3em;
+    color: #3e503e;
+    font-variant: small-caps;
+    max-width: 100%;
+    padding: 0 1em;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 4em;
+    }
+}
+
+
+
+
+@media (max-width: 767px) {
+    h1 {
+        margin-top: 1.5em; /* Original margin-top value + 4em */
+    }
+
+    .image-grid {
+        margin-top: 1.5em; /* Original margin-top value + 4em */
+    }
+
+    /* Other existing styles for mobile can remain unchanged */
+}
+
+@media (min-width: 992px) {
+    h1 {
+        font-size: 5em;
+    }
+}
